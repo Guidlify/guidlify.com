@@ -3,25 +3,25 @@ import Image from "next/legacy/image"
 const Benefits = () => {
 	const benefitData = [
 		{
-			imageSrc: "benefits-1.png",
+			imageSrc: "trekking.svg",
 			title: "Event Management",
 			description:
 				"Platea arcu dapibus non magna cursus lectus id sollicitudin. Enim viverra parturient tristique nulla.",
 		},
 		{
-			imageSrc: "benefits-2.png",
+			imageSrc: "piggy-bank.svg",
 			title: "Funding Opportunity",
 			description:
 				"Congue mauris sem vel, urna viverra. Urna, nibh leo suscipit purus ut sed eros, consectetur viverra.",
 		},
 		{
-			imageSrc: "benefits-3.png",
+			imageSrc: "truck.svg",
 			title: "Community Engagement",
 			description:
 				"Posuere quis sed mauris non curabitur pretium elementum eget. Feugiat sed maecenas eu accumsan tristique.",
 		},
 		{
-			imageSrc: "benefits-4.png",
+			imageSrc: "trophy.svg",
 			title: "Event Metrics",
 			description:
 				"Sit bibendum donec dolor fames neque vulputate non sit aliquam. Consequat turpis natoque leo, massa.",
