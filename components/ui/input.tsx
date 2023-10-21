@@ -11,6 +11,7 @@ export interface InputProps
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ className, type, ...props }, ref) => {
     const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false)
+    const [inputValue, setInputValue] = useState<string>("")
 
     const handleTogglePasswordVisibility = () => {
       setIsPasswordVisible(!isPasswordVisible)
@@ -26,6 +27,12 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       }
     }
 
+    const handleInputChange = (e: {
+      target: { value: React.SetStateAction<string> }
+    }) => {
+      setInputValue(e.target.value)
+    }
+
     return (
       <div className="relative">
         {type === "search" && (
@@ -38,10 +45,13 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             className
           )}
           ref={ref}
+          value={inputValue}
+          onChange={handleInputChange}
           {...props}
         />
-        {type === "password" && (
+        {type === "password" && inputValue && (
           <button
+            type="button"
             className="absolute inset-y-0 right-3 top-2 px-2"
             onClick={handleTogglePasswordVisibility}
           >
