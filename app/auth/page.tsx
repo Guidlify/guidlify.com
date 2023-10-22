@@ -1,13 +1,14 @@
 "use client"
 
-import { useState } from "react"
+import { useContext } from "react"
 import { Metadata } from "next"
 import Image from "next/legacy/image"
 import Link from "next/link"
 
+import { AuthPageContext } from "@/lib/context/AuthPageContext"
 import { UserAuthForm } from "@/components/auth-page/user-auth-form"
 
-import { Button, buttonVariants } from "../../components/ui/button"
+import { Button } from "../../components/ui/button"
 
 export const metadata: Metadata = {
   title: "Authentication",
@@ -15,10 +16,7 @@ export const metadata: Metadata = {
 }
 
 export default function AuthenticationPage() {
-  const [formType, setFormType] = useState<"login" | "signup">("signup")
-  //   const { formType, setFormType } = useContext(AuthPageContext)
-
-  //   const { onSuccessfulAuth } = useAuthContext()
+  const { formType, setFormType } = useContext(AuthPageContext)
 
   return (
     <>
@@ -52,8 +50,8 @@ export default function AuthenticationPage() {
                 setFormType(formType === "login" ? "signup" : "login")
               }}
             >
-              <div className="mr-2 mt-16 flex items-end justify-end space-x-2">
-                {formType === "signup" && (
+              <div className="mr-2 mt-10 flex items-end justify-end space-x-2">
+                {formType === "login" && (
                   <Button
                     //   disabled={isLoading}
                     className="w-24 border-slate-400 hover:border hover:bg-transparent hover:text-white"
@@ -69,6 +67,17 @@ export default function AuthenticationPage() {
                 </Button>
               </div>
             </Link>
+            {formType === "signup" && (
+              <p className="px-2 pt-8 text-center text-sm text-muted-foreground">
+                <Link
+                  href=""
+                  className="underline underline-offset-4 hover:text-primary"
+                  onClick={() => setFormType("login")}
+                >
+                  Already have an account?
+                </Link>
+              </p>
+            )}
           </div>
         </div>
       </div>

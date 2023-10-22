@@ -62,8 +62,8 @@ export function UserAuthForm({
 }: UserAuthFormProps) {
   const defaultValues: Partial<AuthFormValues> = {
     Name: "",
-    email: "abc@gmail.com",
-    password: "hey",
+    email: "",
+    password: "",
   }
 
   const form = useForm<AuthFormValues>({
@@ -145,6 +145,7 @@ export function UserAuthForm({
                           autoCapitalize="none"
                           autoComplete="given-name"
                           autoCorrect="off"
+                          placeholder="Name"
                           disabled={isLoading}
                           className="mt-2 border-gray-300 py-6"
                         />
@@ -172,6 +173,7 @@ export function UserAuthForm({
                         autoCapitalize="none"
                         autoComplete="email"
                         autoCorrect="off"
+                        placeholder="Email"
                         disabled={isLoading}
                         className="mt-2 border-gray-300 py-6"
                         value={email}
@@ -195,13 +197,14 @@ export function UserAuthForm({
                 autoComplete="new-password"
                 // disabled={isLoading}
                 className="mt-2 border-gray-300 py-6"
+                placeholder="Password"
                 // onChange={(e) => {
                 //   handlePasswordChange(e)
                 // }}
               />
             </div>
             {formType === "signup" && (
-              <div className="grid gap-1">
+              <div className="mt-2 grid gap-1">
                 <Label className="text-md ml-1 font-medium" htmlFor="password">
                   Confirm Password
                 </Label>
@@ -212,6 +215,7 @@ export function UserAuthForm({
                   autoComplete="new-password"
                   // disabled={isLoading}
                   className="mt-2 border-gray-300 py-6"
+                  placeholder="Password"
                   // onChange={(e) => {
                   //   handlePasswordChange(e)
                   // }}
@@ -273,7 +277,7 @@ export function UserAuthForm({
                   ) : (
                     <Icons.google className="mr-2 h-4 w-4" />
                   )}{" "}
-                  <span className="text-center md:ml-auto md:mr-10 md:pr-20">
+                  <span className="text-center md:ml-auto md:mr-12 md:pr-24">
                     Sign Up With Google
                   </span>
                 </Button>
@@ -289,7 +293,7 @@ export function UserAuthForm({
                   ) : (
                     <Icons.gitHub className="mr-2 h-4 w-4" />
                   )}{" "}
-                  <span className="text-center md:ml-auto md:mr-10 md:pr-20">
+                  <span className="text-center md:ml-auto md:mr-12 md:pr-24">
                     Sign Up With GitHub
                   </span>
                 </Button>
