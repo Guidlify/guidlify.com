@@ -41,6 +41,7 @@ export default function AuthenticationPage() {
           </div>
         </div>
         <div className="xs:mt-20 md:mt-0 lg:p-8">
+          {/* border border-white  mx-36 my-6 */}
           <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
             <div className="flex flex-col space-y-2 text-center">
               <h1 className="text-2xl font-semibold tracking-tight">
@@ -67,15 +68,17 @@ export default function AuthenticationPage() {
               {formType === "login" && (
                 <Button
                   disabled={hasBasicValidationErrors}
-                  className="w-24 border-slate-400 hover:border hover:bg-transparent hover:text-white"
+                  className="w-24 border-slate-400 hover:border hover:bg-transparent hover:text-black dark:hover:text-white"
                   type="submit"
                 >
                   Sign In
                 </Button>
               )}
               <Button
-                disabled={hasBasicValidationErrors}
-                className="w-24 border border-slate-400 bg-transparent text-white hover:text-black"
+                disabled={
+                  formType === "login" ? false : hasBasicValidationErrors
+                }
+                className="w-24 border border-slate-400 bg-transparent text-black hover:bg-black hover:text-white dark:text-white dark:hover:bg-white dark:hover:text-black"
                 onClick={handleSignup}
                 type="submit"
               >

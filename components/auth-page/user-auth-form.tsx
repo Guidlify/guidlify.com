@@ -345,7 +345,7 @@ export function UserAuthForm({
             )}
             {formType === "signup" && (
               <>
-                <p className="mt-4 px-2 text-sm text-muted-foreground">
+                <div className="mt-4 px-2 text-sm text-muted-foreground">
                   <Checkbox id="terms" className="mr-2" />
                   <label
                     htmlFor="terms"
@@ -370,7 +370,7 @@ export function UserAuthForm({
                     </Link>
                     .
                   </div>
-                </p>
+                </div>
                 <div className="relative mt-8">
                   <div className="relative flex justify-start bg-background px-2 text-sm text-muted-foreground">
                     Or Sign Up with
