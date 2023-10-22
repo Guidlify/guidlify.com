@@ -27,9 +27,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       }
     }
 
-    const handleInputChange = (e: {
-      target: { value: React.SetStateAction<string> }
-    }) => {
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       setInputValue(e.target.value)
     }
 
@@ -39,7 +37,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           <Icons.search className="absolute left-5 top-3 mr-2 h-4 w-4 shrink-0 opacity-50" />
         )}
         <input
-          type={getInputType()}
+          type={type === "password" ? getInputType() : type}
           className={cn(
             "flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
             className
@@ -62,6 +60,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     )
   }
 )
+
 Input.displayName = "Input"
 
 export { Input }

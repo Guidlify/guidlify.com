@@ -1,6 +1,6 @@
 "use client"
 
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { Metadata } from "next"
 import Image from "next/legacy/image"
 import Link from "next/link"
@@ -17,6 +17,12 @@ export const metadata: Metadata = {
 
 export default function AuthenticationPage() {
   const { formType, setFormType } = useContext(AuthPageContext)
+  const [hasBasicValidationErrors, setHasBasicValidationErrors] =
+    useState<boolean>(false)
+
+  const handleValidationStatusChange = (hasErrors: boolean) => {
+    setHasBasicValidationErrors(hasErrors)
+  }
 
   const handleSignup = () => {
     setFormType("signup")
@@ -52,12 +58,17 @@ export default function AuthenticationPage() {
                 </div>
               )}
             </div>
-            <UserAuthForm formType={formType} onSuccessfulAuth={() => {}} />
+            <UserAuthForm
+              formType={formType}
+              onSuccessfulAuth={() => {}}
+              onValidationStatusChange={handleValidationStatusChange}
+            />
             <div className="mr-2 mt-16 flex items-end justify-end space-x-2 pt-10">
               {formType === "login" && (
                 <Button
-                  //   disabled={isLoading}
+                  disabled={true}
                   className="w-24 border-slate-400 hover:border hover:bg-transparent hover:text-white"
+                  type="submit"
                 >
                   Sign In
                 </Button>
@@ -66,6 +77,7 @@ export default function AuthenticationPage() {
                 //   disabled={isLoading}
                 className="w-24 border border-slate-400 bg-transparent text-white hover:text-black"
                 onClick={handleSignup}
+                type="submit"
               >
                 Sign Up
               </Button>

@@ -1,5 +1,5 @@
 import * as React from "react"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Link from "next/link"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useFieldArray, useForm } from "react-hook-form"
@@ -26,6 +26,7 @@ import { Label } from "../ui/label"
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string
   formType: "login" | "signup"
+  onValidationStatusChange: (hasErrors: boolean) => void
   onSuccessfulAuth: (
     userId: string,
     email: string | null,
@@ -46,47 +47,78 @@ const authFormSchema = z.object({
     .max(20, {
       message: "At most 20 characters.",
     }),
-  email: z.string().email({
-    message: "Invalid email address",
+  email: z
+    .string({
+      required_error: "Email is required",
+      invalid_type_error: "Invalid Type",
+    })
+    .email({
+      message: "Invalid email address",
+    })
+    .min(3, {
+      message: "At least 3 characters.",
+    }),
+  password: z.string({
+    required_error: "Password is required",
   }),
-  password: z.string(),
+  confirmPassword: z.string({
+    required_error: "Password is required",
+  }),
 })
 
 type AuthFormValues = z.infer<typeof authFormSchema>
+
+const defaultValues: Partial<AuthFormValues> = {
+  Name: "",
+  email: "",
+  password: "",
+  confirmPassword: "",
+}
 
 export function UserAuthForm({
   className,
   formType,
   onSuccessfulAuth,
+  onValidationStatusChange,
   ...props
 }: UserAuthFormProps) {
-  const defaultValues: Partial<AuthFormValues> = {
-    Name: "",
-    email: "",
-    password: "",
-  }
-
   const form = useForm<AuthFormValues>({
     resolver: zodResolver(authFormSchema),
     defaultValues,
     mode: "onChange",
   })
 
-  const hasBasicValidationErrors = Object.keys(form.formState.errors).length > 0
+  const { handleSubmit, formState, setValue } = form
+
+  useEffect(() => {
+    const calculateValidationStatus = () => {
+      const hasErrors = Object.keys(form.formState.errors).length > 0
+      onValidationStatusChange(hasErrors)
+    }
+
+    calculateValidationStatus()
+  }, [form.formState, onValidationStatusChange])
 
   const [isLoading, setIsLoading] = React.useState<boolean>(false)
-
-  const [email, setEmail] = useState<string>("")
 
   const { toast } = useToast()
   const handleForgotPassword = async (event: React.SyntheticEvent) => {
     event.preventDefault()
-    if (email === "") {
+    if (form.getValues("email") === "") {
       toast({
         title: "Email missing!",
         description: (
           <div className="mt-2 w-[340px] rounded-md bg-foreground p-4 text-background">
             Enter an email to recieve password reset link.
+          </div>
+        ),
+      })
+    } else if (formState.errors.email) {
+      toast({
+        title: "Email incorrect!",
+        description: (
+          <div className="mt-2 w-[340px] rounded-md bg-foreground p-4 text-background">
+            Enter correct email to recieve password reset link.
           </div>
         ),
       })
@@ -119,11 +151,50 @@ export function UserAuthForm({
     }
   }
 
+  async function onSubmit(data: AuthFormValues) {
+    try {
+      const response = await fetch(``, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          firstName: data.Name,
+          // ..... other data
+        }),
+      })
+
+      if (response.ok) {
+        toast({
+          title: "Account updated successfully",
+          description: (
+            <div className="mt-2 w-[340px] rounded-md bg-foreground p-4 text-background">
+              Your profile details have been updated.
+            </div>
+          ),
+        })
+      } else {
+        console.error("Error updating profile:", response.status)
+
+        toast({
+          // variant: 'destructive',
+          title: "Uh Oh! Something went wrong",
+          description: (
+            <div className="mt-2 w-[340px] rounded-md bg-foreground p-4 text-background">
+              There was a problem updating your details.
+            </div>
+          ),
+        })
+      }
+    } catch (error) {
+      console.error("Error updating profile:", error)
+    }
+  }
+
   return (
     <div className={cn("grid gap-6", className)} {...props}>
       <Form {...form}>
-        {/* <form onSubmit={form.handleSubmit(onSubmit)}> */}
-        <form onSubmit={() => {}}>
+        <form onSubmit={form.handleSubmit(onSubmit)}>
           <div className="grid gap-2">
             {formType === "signup" && (
               <div className="grid gap-1">
@@ -176,8 +247,6 @@ export function UserAuthForm({
                         placeholder="Email"
                         disabled={isLoading}
                         className="mt-2 border-gray-300 py-6"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
                       />
                     </FormControl>
                     <FormDescription></FormDescription>
@@ -187,38 +256,65 @@ export function UserAuthForm({
               />
             </div>
             <div className="grid gap-1">
-              <Label className="text-md ml-1 font-medium" htmlFor="password">
-                Password
-              </Label>
-              <Input
-                id="password"
-                // placeholder="Password"
-                type="password"
-                autoComplete="new-password"
-                // disabled={isLoading}
-                className="mt-2 border-gray-300 py-6"
-                placeholder="Password"
-                // onChange={(e) => {
-                //   handlePasswordChange(e)
-                // }}
+              <FormField
+                control={form.control}
+                name="password"
+                render={({ field }) => (
+                  <FormItem>
+                    <Label
+                      className="text-md ml-1 font-medium"
+                      htmlFor="password"
+                    >
+                      Password
+                    </Label>
+                    <FormControl>
+                      <Input
+                        {...field}
+                        id="password"
+                        placeholder="Password"
+                        type="password"
+                        autoComplete="new-password"
+                        autoCorrect="off"
+                        disabled={isLoading}
+                        className="mt-2 border-gray-300 py-6"
+                      />
+                    </FormControl>
+                    <FormDescription></FormDescription>
+                    <FormMessage />
+                  </FormItem>
+                )}
               />
             </div>
             {formType === "signup" && (
               <div className="mt-2 grid gap-1">
-                <Label className="text-md ml-1 font-medium" htmlFor="password">
-                  Confirm Password
-                </Label>
-                <Input
-                  id="password"
-                  // placeholder="Password"
-                  type="password"
-                  autoComplete="new-password"
-                  // disabled={isLoading}
-                  className="mt-2 border-gray-300 py-6"
-                  placeholder="Password"
-                  // onChange={(e) => {
-                  //   handlePasswordChange(e)
-                  // }}
+                <FormField
+                  control={form.control}
+                  name="confirmPassword"
+                  render={({ field }) => (
+                    <FormItem>
+                      <Label
+                        className="text-md ml-1 font-medium"
+                        htmlFor="confirmPassword"
+                      >
+                        Password
+                      </Label>
+                      <FormControl>
+                        <Input
+                          {...field}
+                          id="confirmPassword"
+                          placeholder="Confirm Password"
+                          name="confirmPassword"
+                          type="password"
+                          autoComplete="new-password"
+                          autoCorrect="off"
+                          disabled={isLoading}
+                          className="mt-2 border-gray-300 py-6"
+                        />
+                      </FormControl>
+                      <FormDescription></FormDescription>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
               </div>
             )}
