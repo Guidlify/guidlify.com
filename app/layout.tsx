@@ -6,6 +6,10 @@ import { Metadata } from "next"
 
 import { landingConfig } from "@/config/landing"
 import { siteConfig } from "@/config/site"
+import {
+  AuthPageContext,
+  AuthPageProvider,
+} from "@/lib/context/AuthPageContext"
 import { cn } from "@/lib/utils"
 import { Toaster } from "@/components/ui/toaster"
 import AuthNav from "@/components/auth-nav"
@@ -89,18 +93,20 @@ export default async function RootLayout({ children }: RootLayoutProps) {
           fontHeading.variable
         )}
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <header className="container z-40 bg-background">
-            <div className="flex h-20 items-center justify-between py-6">
-              <MainNav items={landingConfig.mainNav} />
-              <AuthNav items={landingConfig.privateNav} />
-            </div>
-          </header>
-          <div className="grow">{children}</div>
-          <SiteFooter></SiteFooter>
-          <TailwindIndicator />
-          <Toaster />
-        </ThemeProvider>
+        <AuthPageProvider>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            <header className="container z-40 bg-background">
+              <div className="flex h-20 items-center justify-between py-6">
+                <MainNav items={landingConfig.mainNav} />
+                <AuthNav items={landingConfig.privateNav} />
+              </div>
+            </header>
+            <div className="grow">{children}</div>
+            {/* <SiteFooter></SiteFooter> */}
+            <TailwindIndicator />
+            <Toaster />
+          </ThemeProvider>
+        </AuthPageProvider>
       </body>
     </html>
   )
