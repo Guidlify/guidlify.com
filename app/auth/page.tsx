@@ -66,7 +66,7 @@ export default function AuthenticationPage() {
             <div className="mr-2 mt-16 flex items-end justify-end space-x-2 pt-10">
               {formType === "login" && (
                 <Button
-                  disabled={true}
+                  disabled={hasBasicValidationErrors}
                   className="w-24 border-slate-400 hover:border hover:bg-transparent hover:text-white"
                   type="submit"
                 >
@@ -74,7 +74,7 @@ export default function AuthenticationPage() {
                 </Button>
               )}
               <Button
-                //   disabled={isLoading}
+                disabled={hasBasicValidationErrors}
                 className="w-24 border border-slate-400 bg-transparent text-white hover:text-black"
                 onClick={handleSignup}
                 type="submit"

@@ -92,12 +92,26 @@ export function UserAuthForm({
 
   useEffect(() => {
     const calculateValidationStatus = () => {
-      const hasErrors = Object.keys(form.formState.errors).length > 0
+      const requiredFields =
+        formType === "login"
+          ? ["email", "password"]
+          : ["email", "Name", "password", "confirmPassword"]
+
+      const emptyFields = requiredFields.some(
+        (fieldName) =>
+          form.getValues(
+            fieldName as "Name" | "email" | "password" | "confirmPassword"
+          ) === ""
+      )
+      const hasErrors =
+        Object.keys(form.formState.errors).length > 0 || emptyFields === true
       onValidationStatusChange(hasErrors)
+
+      // console.log({ hasErrors })
     }
 
     calculateValidationStatus()
-  }, [form.formState, onValidationStatusChange])
+  }, [form, form.formState, formType, onValidationStatusChange])
 
   const [isLoading, setIsLoading] = React.useState<boolean>(false)
 
