@@ -10,10 +10,10 @@ import { UserAuthForm } from "@/components/auth-page/user-auth-form"
 
 import { Button } from "../../components/ui/button"
 
-export const metadata: Metadata = {
-  title: "Authentication",
-  description: "Authentication page of guidlify.com",
-}
+// export const metadata: Metadata = {
+//   title: "Authentication",
+//   description: "Authentication page of guidlify.com",
+// }
 
 export default function AuthenticationPage() {
   const { formType, setFormType } = useContext(AuthPageContext)
