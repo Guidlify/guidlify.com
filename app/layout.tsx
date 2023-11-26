@@ -90,14 +90,14 @@ export default async function RootLayout({ children }: RootLayoutProps) {
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <header className="container z-40 bg-background">
+          {/* <header className="container z-40 bg-background">
             <div className="flex h-20 items-center justify-between py-6">
               <MainNav items={landingConfig.mainNav} />
               <AuthNav items={landingConfig.privateNav} />
             </div>
-          </header>
+          </header> */}
           <div className="grow">{children}</div>
-          <SiteFooter></SiteFooter>
+          {/* <SiteFooter></SiteFooter> */}
           <TailwindIndicator />
           <Toaster />
         </ThemeProvider>
