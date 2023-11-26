@@ -28,8 +28,8 @@ const Footer = () => {
         <div className="flex flex-col xs:items-center xs:justify-center sm:space-x-12 lg:flex-row lg:items-start lg:space-x-16 xl:space-x-24">
           <div className="xs:col-span-5 xs:pb-8 lg:col-span-1 lg:pb-0">
             <Image
-              src={"/guildify-brand-logo.svg"}
-              alt=""
+              src={"/guidlify-brand-logo.svg"}
+              alt="brand logo of guidlify"
               width={120}
               height={50}
             />

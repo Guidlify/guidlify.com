@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/legacy/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
@@ -18,11 +19,15 @@ export function MainNav({ items }: MainNavProps) {
     <div className="flex gap-6 md:gap-10">
       <Link
         href="/"
-        className="xs:inline-flex items-center space-x-2 sm:inline-flex md:flex"
+        className="items-center space-x-2 xs:inline-flex sm:inline-flex md:flex"
       >
-        <Icons.radio className="h-6 w-6" />
         <span className="hidden font-bold sm:inline-block">
-          {siteConfig.name}
+          <Image
+            src={"/guidlify-brand-logo.svg"}
+            alt="brand logo of guidlify"
+            width={150} // 60 -> notext
+            height={80} // 40 -> notext
+          />
         </span>
       </Link>
       {items?.length ? (
