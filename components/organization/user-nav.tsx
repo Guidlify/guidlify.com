@@ -46,22 +46,22 @@ export function UserNav() {
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem className="cursor-pointer p-2 text-black dark:text-gray-200">
-            <Icons.Profile className="mr-2 h-4 w-4 shrink-0" />
+            <Icons.user className="mr-2 h-4 w-4 shrink-0" />
             Profiles
             <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
           </DropdownMenuItem>
           <DropdownMenuItem className="cursor-pointer p-2 text-black dark:text-gray-200">
-            <Icons.Billing className="mr-2 h-4 w-4 shrink-0" />
+            <Icons.creditCard className="mr-2 h-4 w-4 shrink-0" />
             Billing
             <DropdownMenuShortcut>⇧⌘B</DropdownMenuShortcut>
           </DropdownMenuItem>
           <DropdownMenuItem className="cursor-pointer p-2 text-black dark:text-gray-200">
-            <Icons.Settings className="mr-2 h-4 w-4 shrink-0" />
+            <Icons.settings className="mr-2 h-4 w-4 shrink-0" />
             Settings
             <DropdownMenuShortcut>⇧⌘S</DropdownMenuShortcut>
           </DropdownMenuItem>
           <DropdownMenuItem className="cursor-pointer p-2 text-black dark:text-gray-200">
-            <Icons.Keyboard className="mr-2 h-4 w-4 shrink-0" />
+            <Icons.keyboard className="mr-2 h-4 w-4 shrink-0" />
             Keyboard Shortcuts
             <DropdownMenuShortcut>⇧⌘K</DropdownMenuShortcut>
           </DropdownMenuItem>
@@ -69,17 +69,17 @@ export function UserNav() {
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem className="cursor-pointer p-2 text-black dark:text-gray-200">
-            <Icons.Team className="mr-2 h-4 w-4 shrink-0" />
+            <Icons.users className="mr-2 h-4 w-4 shrink-0" />
             Team
             <DropdownMenuShortcut>⇧⌘T</DropdownMenuShortcut>
           </DropdownMenuItem>
           <DropdownMenuItem className="cursor-pointer p-2 text-black dark:text-gray-200">
-            <Icons.Billing className="mr-2 h-4 w-4 shrink-0" />
+            <Icons.creditCard className="mr-2 h-4 w-4 shrink-0" />
             Invite users
             <Icons.chevronRight className="ml-auto mr-1 h-4 w-4 shrink-0 text-gray-700" />
           </DropdownMenuItem>
           <DropdownMenuItem className="cursor-pointer p-2 text-black dark:text-gray-200">
-            <Icons.Team className="mr-2 h-4 w-4 shrink-0" />
+            <Icons.users className="mr-2 h-4 w-4 shrink-0" />
             New team
             <DropdownMenuShortcut>⇧⌘N</DropdownMenuShortcut>
           </DropdownMenuItem>
@@ -89,17 +89,17 @@ export function UserNav() {
             <DropdownMenuShortcut>⇧⌘G</DropdownMenuShortcut>
           </DropdownMenuItem>
           <DropdownMenuItem className="cursor-pointer p-2 text-black dark:text-gray-200">
-            <Icons.Billing className="mr-2 h-4 w-4 shrink-0" />
+            <Icons.creditCard className="mr-2 h-4 w-4 shrink-0" />
             Support
             <Icons.chevronRight className="ml-auto mr-1 h-4 w-4 shrink-0 text-gray-700" />
           </DropdownMenuItem>
           <DropdownMenuItem className="cursor-pointer p-2 text-black dark:text-gray-200">
-            <Icons.Cloud className="mr-2 h-4 w-4 shrink-0" />
+            <Icons.cloud className="mr-2 h-4 w-4 shrink-0" />
             API
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuItem className="cursor-pointer p-3 text-black dark:text-gray-200">
-          <Icons.LogOut className="mr-2 h-4 w-4 shrink-0" />
+          <Icons.logOut className="mr-2 h-4 w-4 shrink-0" />
           Log Out
           <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
         </DropdownMenuItem>
