@@ -2,6 +2,7 @@
 
 import Image from "next/legacy/image"
 
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
 
@@ -79,6 +80,27 @@ const badgeSponsorData = {
     },
   ],
 }
+
+const eventHostedData = [
+  {
+    imageSrc: "/organization/team.png",
+    tag: "Most popular",
+    title: "Many desktop publishing packages and web page",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas quis eros sed risus sollicitudin fringilla dictum in metus.",
+    avatarSrc: "/organization/avatar.png",
+    organizationName: "WebXGuild",
+  },
+  {
+    imageSrc: "/organization/team.png",
+    tag: "Most popular",
+    title: "Many desktop publishing packages and web page",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas quis eros sed risus sollicitudin fringilla dictum in metus.",
+    avatarSrc: "/organization/avatar.png",
+    organizationName: "WebXGuild",
+  },
+]
 
 interface BadgeSectionProps {
   title: string
@@ -166,7 +188,7 @@ const OrganizationPage = () => {
         </div>
         <div className="border-b-1 mt-6 w-full border" />
         <div className="mt-16 flex justify-start">
-          <div className="flex-1 flex-col">
+          <div className="ml-8 flex-1 flex-col">
             <BadgeSection {...badgeSponsorData.badges[0]} />
             <BadgeSection {...badgeSponsorData.sponsor[0]} />
             <div>
@@ -178,7 +200,7 @@ const OrganizationPage = () => {
               </div>
             </div>
           </div>
-          <div className="w-894 flex-col">
+          <div className="w-894 mr-4 flex-col">
             <h1 className="pb-4 text-xl font-bold">Upcoming Events</h1>
             {eventData.map((eventInfo) => (
               <div className="bg-image-container mb-8 h-[114px] w-[800px] rounded-lg p-4 text-white">
@@ -212,7 +234,43 @@ const OrganizationPage = () => {
           </div>
         </div>
         <div className="border-b-1 mt-16 w-full border" />
-        {/*  */}
+        <div>
+          <h1 className="mt-12 text-2xl">Events Hosted</h1>
+          <div className="mt-8 flex justify-evenly space-x-5">
+            {eventHostedData.map((event, index) => (
+              <div className="flex">
+                <div className="ml-4 mr-10 mt-4 w-[235px]">
+                  <Image
+                    alt="event hosted"
+                    src={event.imageSrc}
+                    width={300}
+                    height={300}
+                    className="rounded-sm"
+                  />
+                </div>
+                <div className="flex w-[236px] flex-col space-y-1 pt-5">
+                  <div className="mb-1 w-24 rounded-sm bg-violet-600 p-2 pl-3 text-xs">
+                    {event.tag}
+                  </div>
+                  <div className="line-clamp-2 pb-3 text-lg font-bold">
+                    {event.title}
+                  </div>
+                  <p className=" pb-2 text-sm">{event.description}</p>
+                  <div className="flex">
+                    <Avatar className="mr-2 h-8 w-8">
+                      <AvatarImage
+                        src={"" || `${event.avatarSrc}`}
+                        alt="avatar image"
+                      />
+                      <AvatarFallback>{"GL"}</AvatarFallback>
+                    </Avatar>
+                    {event.organizationName}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   )
