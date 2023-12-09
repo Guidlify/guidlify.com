@@ -1,18 +1,22 @@
 import {
+  ChevronDown,
   ChevronRight,
   Cloud,
   CreditCard,
   Github,
   Globe,
+  GripHorizontal,
   Keyboard,
   Laptop,
   LogOut,
   LucideProps,
   Moon,
   Plus,
+  PlusSquare,
   Radar,
   RadioTower,
   Settings,
+  Star,
   SunMedium,
   Twitch,
   Twitter,
@@ -46,6 +50,10 @@ export const Icons = {
   youtube: Youtube,
   twitch: Twitch,
   globe: Globe,
+  plusSquare: PlusSquare,
+  gripHorizontal: GripHorizontal,
+  star: Star,
+  chevronDown: ChevronDown,
   logo: (props: LucideProps) => (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
       <path
