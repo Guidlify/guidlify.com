@@ -10,14 +10,8 @@ const BadgeSection: React.FC<BadgeSectionProps> = ({ title, items }) => (
     <h1 className="mb-2 text-xl font-bold">{title}</h1>
     <div className="mb-4 flex space-x-2 pl-4">
       {items.map((item) => (
-        <div key={item.name}>
-          <Image
-            alt={item.name}
-            src={item.url}
-            width={44}
-            height={44}
-            className="mr-2"
-          />
+        <div key={item.name} className="mr-1 mt-1">
+          <Image alt={item.name} src={item.url} width={44} height={44} />
         </div>
       ))}
     </div>
