@@ -17,9 +17,12 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({
 }) => {
   return (
     <>
-      <div className="flex">
-        <div className="text-xl font-bold">{name}</div>
-        <div className="ml-2">
+      <div className="ml-4 flex justify-center">
+        <div className="flex flex-col items-center justify-center">
+          <div className="text-xl font-bold">{name}</div>
+          <div>{`@${username}`}</div>
+        </div>
+        <div className="ml-2 mt-1">
           <Image
             alt="verified badge for organization"
             src={`${url}`}
@@ -28,7 +31,6 @@ const ProfileInfo: React.FC<ProfileInfoProps> = ({
           />
         </div>
       </div>
-      {`@${username}`}
       <p className="max-w-[600px] pt-6 text-center">{description}</p>
       <div className="mt-12 flex items-center">
         <Icons.youtube className="mr-3 h-4 w-4 shrink-0" />
