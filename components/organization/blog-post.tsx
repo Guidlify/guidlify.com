@@ -1,5 +1,6 @@
 import Image from "next/legacy/image"
 
+import { cn } from "@/lib/utils"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 interface BlogPostProps {
@@ -31,7 +32,11 @@ const BlogPost: React.FC<BlogPostProps> = ({
         />
       </div>
       <div className="flex w-[236px] flex-col space-y-1 pt-5">
-        <div className="mb-1 w-24 rounded-sm bg-violet-600 p-2 pl-3 text-xs">
+        <div
+          className={cn("mb-1 w-24 rounded-sm bg-violet-600 p-2 pl-3 text-xs", {
+            "w-16": tag === "Popular",
+          })}
+        >
           {tag}
         </div>
         <div className="line-clamp-2 pb-3 text-lg font-bold">{title}</div>

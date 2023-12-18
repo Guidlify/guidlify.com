@@ -95,7 +95,7 @@ const eventHostedData = [
   },
   {
     imageSrc: "/organization/team.png",
-    tag: "Most popular",
+    tag: "Popular",
     title: "Many desktop publishing packages and web page",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas quis eros sed risus sollicitudin fringilla dictum in metus.",
@@ -119,7 +119,7 @@ const OrganizationPage = () => {
           <ProfileInfo
             name="Cool Guy"
             url="/organization/verified-user.png"
-            username="@coolguy"
+            username="coolguy"
             description="I like attending events! I might sponsor one too if I'm very much interested. Just hit me up, let's talk!"
           />
           <div className="flex w-full items-end xs:mt-8 xs:justify-center md:mt-[-30px] md:justify-end">
