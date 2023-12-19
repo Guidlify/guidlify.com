@@ -171,7 +171,7 @@ const OrganizationPage = () => {
           <div className="flex flex-col">
             <h1 className="pb-4 text-xl font-bold">Events Interested In</h1>
             {eventData.map((eventInfo) => (
-              <div className="mb-8 h-[84px] w-[480px] rounded-lg bg-white p-4 text-black">
+              <div className="mb-8 h-[84px] w-[480px] rounded-lg bg-gray-200 p-4 text-black dark:bg-white">
                 <div className="flex">
                   <div className="w-74 flex-col pl-2 pr-12">
                     <div className="pb-1 text-sm font-bold">
