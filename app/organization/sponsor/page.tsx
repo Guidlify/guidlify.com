@@ -1,7 +1,6 @@
 "use client"
 
 import Image from "next/legacy/image"
-import Link from "next/link"
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
@@ -12,9 +11,7 @@ import {
 } from "@/components/ui/hover-card"
 import AvatarOverLap from "@/components/home-page/avatar-overlap"
 import { Icons } from "@/components/icons"
-import BadgeSection from "@/components/organization/badge-section"
 import BannerOrganization from "@/components/organization/banner"
-import CreateEvent from "@/components/organization/create-event"
 
 const sponsorData = [
   {
@@ -35,71 +32,16 @@ const sponsorData = [
   },
 ]
 
-const badgeSponsorData = {
-  sponsor: [
+const SponsoringOrganizations = {
+  organizations: [
     {
       title: "Sponsoring",
       items: [
         {
-          name: "WebXGuild",
-          url: "/organization/webxguild.png",
-        },
-        {
           name: "WebXDAO",
           url: "/organization/webxdao.png",
-        },
-      ],
-    },
-    {
-      title: "Organizations",
-      items: [
-        {
-          name: "WebXGuild",
-          url: "/organization/codepen.png",
-        },
-        {
-          name: "WebXDAO",
-          url: "/organization/ghost.png",
-        },
-      ],
-    },
-  ],
-  sponsoring: [
-    {
-      title: "Attending",
-      items: [
-        {
-          name: "WebX Manila",
-          date: "10/24/2023",
-        },
-        {
-          name: "ETHGlobal",
-          date: "12/23/2023",
-        },
-        {
-          name: "Hackcon",
-          date: "03/13/2023",
-        },
-      ],
-    },
-    {
-      title: "Past Events Attended",
-      items: [
-        {
-          name: "WebX Manila",
-          date: "10/24/2023",
-        },
-        {
-          name: "Polygon Hacks",
-          date: "12/23/2023",
-        },
-        {
-          name: "Chicken neck eater",
-          date: "12/23/2023",
-        },
-        {
-          name: "MLH Manila",
-          date: "12/23/2023",
+          description:
+            "This is so good! I encourage everyone who is reading this right now to attend the events they host. Definitely helps people build career in tech - currently sponsoring this organization.",
         },
       ],
     },
@@ -243,23 +185,32 @@ const OrganizationPage = () => {
             ))}
           </div>
           <div className="mt-6">
-            <h1 className="mb-6 text-3xl font-bold tracking-wide">Sponsors</h1>
-            <div className="border-1 rounded-md border border-gray-200 p-4">
-              <div className="flex items-center">
-                <Image
-                  alt={"webxdao"}
-                  src={"/organization/webxdao.png"}
-                  width={54}
-                  height={48}
-                />
-                <span className="ml-4 mt-1 text-2xl font-bold">WebXDAO</span>
+            {SponsoringOrganizations.organizations.map((org, idx) => (
+              <div key={idx}>
+                <h1 className="mb-6 text-3xl font-bold tracking-wide">
+                  {org.title}
+                </h1>
+                {org.items.map((item, innerIdx) => (
+                  <div
+                    className="border-1 rounded-md border border-gray-200 p-4"
+                    key={innerIdx}
+                  >
+                    <div className="flex items-center">
+                      <Image
+                        alt={"webxdao"}
+                        src={item.url}
+                        width={54}
+                        height={48}
+                      />
+                      <span className="ml-4 mt-1 text-2xl font-bold">
+                        {item.name}
+                      </span>
+                    </div>
+                    <p className="mb-2 mt-3 px-4 text-sm">{item.description}</p>
+                  </div>
+                ))}
               </div>
-              <p className="mb-2 mt-3 px-4 text-sm">
-                This is so good! I encourage everyone who is reading this right
-                now to attend the events they host. Definitely helps people
-                build career in tech - currently sponsoring this organization.{" "}
-              </p>
-            </div>
+            ))}
           </div>
         </div>
       </div>
