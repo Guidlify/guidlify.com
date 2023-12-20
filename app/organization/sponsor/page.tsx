@@ -52,15 +52,15 @@ const OrganizationPage = () => {
   return (
     <div className="container mb-20">
       <BannerOrganization url="/organization/banner.png" />
-      <div className="mr-10 flex justify-end">
+      <div className="mr-24 flex justify-end">
         <div className="mr-3 mt-[-24px]">
           <AvatarOverLap
-            size={36}
+            size={44}
             url={"/organization/avatar.png"}
             option="black"
           />
         </div>
-        <span className="mt-1 text-sm text-white">
+        <span className="mt-2 text-sm text-black dark:text-white">
           1k+ people interested are in this event!
         </span>
       </div>

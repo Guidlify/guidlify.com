@@ -31,7 +31,8 @@ const AvatarOverLap = ({
               "relative flex h-11 w-11 items-center justify-center rounded-full bg-slate-500 dark:bg-violet-400",
               {
                 "ml-[-10px]": index > 0,
-                "bg-white dark:bg-black": option === "black",
+                "ml-[-16px] bg-white dark:bg-black": option === "black",
+                "h-[52px] w-[52px]": size === 44,
               }
             )}
           >
