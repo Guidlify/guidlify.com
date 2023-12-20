@@ -33,6 +33,7 @@ const AvatarOverLap = ({
                 "ml-[-10px]": index > 0,
                 "ml-[-16px] bg-white dark:bg-black": option === "black",
                 "h-[52px] w-[52px]": size === 44,
+                "h-[40px] w-[40px]": size === 34,
               }
             )}
           >

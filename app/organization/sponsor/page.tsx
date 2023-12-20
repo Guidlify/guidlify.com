@@ -48,7 +48,7 @@ const SponsoringOrganizations = {
   ],
 }
 
-const OrganizationPage = () => {
+const SponsorPage = () => {
   return (
     <div className="container mb-20">
       <BannerOrganization url="/organization/banner.png" />
@@ -218,4 +218,4 @@ const OrganizationPage = () => {
   )
 }
 
-export default OrganizationPage
+export default SponsorPage
