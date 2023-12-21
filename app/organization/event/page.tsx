@@ -33,6 +33,13 @@ const FaqData = {
   ],
 }
 
+const EventScheduleData = [
+  { month: "Sept", day: "25", label: "Registration Start" },
+  { month: "Sept", day: "30", label: "Registration Closed" },
+  { month: "Oct", day: "2", label: "Start of Event" },
+  { month: "Oct", day: "4", label: "Final Day" },
+]
+
 const eventSnapshots = [
   "/organization/eventSnapshot1.png",
   "/organization/eventSnapshot2.png",
@@ -57,8 +64,8 @@ const EventPage = () => {
     <div className="container mb-20">
       <BannerOrganization url="/organization/banner.png" />
 
-      <div className="mr-6 flex px-10">
-        <div className="flex flex-col">
+      <div className="flex px-10">
+        <div className="mr-6 flex flex-col">
           <h1 className="mt-10 text-2xl font-semibold">WebX Manilla</h1>
           <h3 className="mb-0 text-xl font-medium text-gray-400">WebX Guild</h3>
           <div className="flex">
@@ -203,6 +210,47 @@ const EventPage = () => {
               </div>
             ))}
           </div>
+        </div>
+      </div>
+      <div className="px-16">
+        <h1 className="mb-16 ml-4 mt-12 text-3xl font-bold">Event Schedule</h1>
+
+        <div className="flex space-x-6">
+          {EventScheduleData.map((event, index) => (
+            <>
+              <div
+                className={`${
+                  index === 0 ? "rounded-xl p-1 " : "rounded-xl p-0"
+                }`}
+                style={{
+                  ...(index === 0 && {
+                    background: `linear-gradient(180deg, #F36169, #F7ADB1, #00000000, #F7ADB1, #F36169)`,
+                  }),
+                }}
+                // bg-gradient-to-r from-[#ff8906] via-[#7f5af0] to-transparent -> another option
+              >
+                <div
+                  key={index}
+                  className={`flex h-[150px] w-[150px] flex-col items-center justify-center rounded-xl text-white`}
+                  style={{
+                    background:
+                      "linear-gradient(180deg, #9848FF 14.06%, #49138D 100%)",
+                  }}
+                >
+                  <div className="mb-0 text-sm font-light">{event.month}</div>
+                  <div className="mb-6 text-4xl font-light">{event.day}</div>
+                  <div className="font-regular text-xs">{event.label}</div>
+                </div>
+              </div>
+              {index !== EventScheduleData.length - 1 && (
+                <div className="flex w-[91px] items-center justify-center">
+                  <div className="mr-[18px] h-1 w-[17px] rounded-full border-[3px] border-[#ACACB4]"></div>
+                  <div className="mr-[18px] h-1 w-[28px] rounded-full border-[3px] border-[#ACACB4]"></div>
+                  <div className="h-1 w-[17px] rounded-full border-[3px] border-[#ACACB4]"></div>
+                </div>
+              )}
+            </>
+          ))}
         </div>
       </div>
     </div>
