@@ -9,6 +9,7 @@ const BannerOrganization: React.FC<{ url: string }> = ({ url }) => {
         width={1200}
         height={300}
         layout="responsive"
+        priority={true}
       />
     </>
   )
