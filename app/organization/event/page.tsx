@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import AvatarOverLap from "@/components/home-page/avatar-overlap"
 import { Icons } from "@/components/icons"
 import BannerOrganization from "@/components/organization/banner"
+import CustomProgressBar from "@/components/organization/custom-progress-bar"
 
 const FaqData = {
   faq: [
@@ -45,19 +46,6 @@ const eventSnapshots = [
   "/organization/eventSnapshot2.png",
   "/organization/eventSnapshot3.png",
 ]
-
-const CustomProgressBar = ({ value, max }: { value: number; max: number }) => {
-  const percentage = (value / max) * 100
-
-  return (
-    <div className="relative h-4 w-full overflow-hidden rounded-sm bg-gray-200">
-      <div
-        style={{ width: `${percentage}%` }}
-        className="h-full rounded-sm bg-violet-700"
-      />
-    </div>
-  )
-}
 
 const EventPage = () => {
   return (
