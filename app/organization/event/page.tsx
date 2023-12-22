@@ -118,7 +118,7 @@ const EventPage = () => {
                     alt={`event snapshot ${idx}"`}
                     width={225}
                     height={225}
-                    className="rounded-md"
+                    className="rounded-md object-cover"
                   />
                   <div className="absolute left-0 top-0 h-full w-full rounded-md opacity-50 dark:bg-black"></div>
                 </div>
