@@ -67,7 +67,9 @@ const EventPage = () => {
       <div className="flex px-10">
         <div className="mr-6 flex flex-col">
           <h1 className="mt-10 text-2xl font-semibold">WebX Manilla</h1>
-          <h3 className="mb-0 text-xl font-medium text-gray-400">WebX Guild</h3>
+          <h3 className="mb-0 text-xl font-medium text-gray-600 dark:text-gray-400">
+            WebX Guild
+          </h3>
           <div className="flex">
             <div className="mr-4 flex items-center justify-center">
               Philippines, Manila
@@ -116,8 +118,9 @@ const EventPage = () => {
                     alt={`event snapshot ${idx}"`}
                     width={225}
                     height={225}
+                    className="rounded-md"
                   />
-                  <div className="absolute left-0 top-0 h-full w-full rounded-md bg-black opacity-50"></div>
+                  <div className="absolute left-0 top-0 h-full w-full rounded-md opacity-50 dark:bg-black"></div>
                 </div>
               ))}
             </div>
@@ -167,7 +170,7 @@ const EventPage = () => {
           <div className="mb-8 mt-20 flex flex-col items-center justify-center">
             <CustomProgressBar value={3000} max={5000} />
             <div className="mb-1 mt-2 flex text-2xl font-bold">
-              US$ <span className="text-gray-300">3000</span>
+              US$ <span className="text-gray-500 dark:text-gray-300">3000</span>
             </div>
             <div className="text-sm">pledge of US$ 5000 goal</div>
             <div className="mt-5 flex">
@@ -196,7 +199,7 @@ const EventPage = () => {
                           {item.question}
                         </span>
                       </div>
-                      <p className="mb-2 mt-1 px-4 text-sm text-gray-300/90">
+                      <p className="mb-2 mt-1 px-4 text-sm text-gray-500/80 dark:text-gray-300/90">
                         {item.answer}
                       </p>
                       {innerIdx !== faq.items.length - 1 && (
@@ -220,7 +223,7 @@ const EventPage = () => {
             <>
               <div
                 className={`${
-                  index === 0 ? "rounded-xl p-1 " : "rounded-xl p-0"
+                  index === 0 ? "rounded-xl p-[5px]" : "rounded-xl p-0"
                 }`}
                 style={{
                   ...(index === 0 && {
