@@ -28,8 +28,26 @@ const eventSnapshots = [
 const EventPage = () => {
   return (
     <div className="container mb-20">
-      <BannerOrganization url="/organization/banner.png" />
+      {/* <BannerOrganization url="/organization/banner.png" /> */}
       <div className="px-10">
+        <div className="mb-4 mt-10">
+          <h3 className="flex justify-center text-lg">Live & Virtual Event</h3>
+          <div className="relative mt-2 hover:opacity-60">
+            <Image
+              alt="banner of organization"
+              src={`/organization/event-name-snapshot.jpeg`}
+              width={1135}
+              height={536}
+              layout="responsive"
+              priority={true}
+              className="shrink-0 rounded-3xl object-cover transition-all duration-300 hover:cursor-pointer hover:opacity-60"
+            />
+            <div className="absolute bottom-8 left-8 flex items-center">
+              <Icons.PlayEvent className="h-[60px] w-[60px] rounded-full bg-gray-300 text-[#111827]" />
+              <div className="ml-8 text-lg font-medium">2023 Teaser</div>
+            </div>
+          </div>
+        </div>
         <div className="mx-4 flex items-start justify-between">
           <div className="flex flex-col">
             <h1 className="mt-10 text-2xl font-semibold">WebX Manilla</h1>
