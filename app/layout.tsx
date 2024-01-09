@@ -1,12 +1,8 @@
-// "use client"
-
 import { Inter as FontSans } from "next/font/google"
 import localFont from "next/font/local"
 
 import "@/styles/globals.css"
 import { Metadata } from "next"
-
-// import { usePathname } from "next/navigation"
 
 import { landingConfig } from "@/config/landing"
 import { siteConfig } from "@/config/site"
@@ -84,8 +80,6 @@ export const metadata: Metadata = {
 }
 
 export default async function RootLayout({ children }: RootLayoutProps) {
-  // const homeRoute = usePathname()
-
   return (
     <html lang="en" suppressHydrationWarning>
       <body
@@ -96,16 +90,14 @@ export default async function RootLayout({ children }: RootLayoutProps) {
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          {/* {homeRoute === "/" && (
-            <header className="container z-40 bg-background">
-              <div className="flex h-20 items-center justify-between py-6">
-                <MainNav items={landingConfig.mainNav} />
-                <AuthNav items={landingConfig.privateNav} />
-              </div>
-            </header>
-          )} */}
+          <header className="container z-40 bg-background">
+            <div className="flex h-20 items-center justify-between py-6">
+              <MainNav items={landingConfig.mainNav} />
+              <AuthNav items={landingConfig.privateNav} />
+            </div>
+          </header>
           <div className="grow">{children}</div>
-          {/* {homeRoute === "/" && <SiteFooter></SiteFooter>} */}
+          <SiteFooter></SiteFooter>
           <TailwindIndicator />
           <Toaster />
         </ThemeProvider>

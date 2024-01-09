@@ -25,8 +25,16 @@ export function MainNav({ items }: MainNavProps) {
           <Image
             src={"/guidlify-brand-logo.svg"}
             alt="brand logo of guidlify"
-            width={150} // 60 -> notext
-            height={80} // 40 -> notext
+            width={150}
+            height={80}
+          />
+        </span>
+        <span className="font-bold xs:inline-block sm:hidden">
+          <Image
+            src={"/guidlify-brand-logo-notext.svg"}
+            alt="brand logo of guidlify"
+            width={60}
+            height={40}
           />
         </span>
       </Link>
