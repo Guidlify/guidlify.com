@@ -206,10 +206,3 @@ div.slider ul.lane li.event-location {
 /* .box-card-shadow {
   box-shadow: 0px 10px 30px -8px rgba(0, 0, 0, 0.5);
 } */
-
-.bg-image-container {
-  background-image: url("../public/organization/banner.png");
-  background-size: cover;
-  background-position: center;
-  position: relative;
-}
