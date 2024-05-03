@@ -72,7 +72,7 @@ export function SiteFooter({ className }: React.HTMLAttributes<HTMLElement>) {
 					</div>
 				</h1>
 				<h1 className="xs:text-md sm:text-sm">
-					Copyright © 2023 Guidlify
+					Copyright © {new Date().getFullYear()} Guidlify
 				</h1>
 			</div>
 		</footer>
