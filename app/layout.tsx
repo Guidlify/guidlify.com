@@ -8,11 +8,10 @@ import { landingConfig } from "@/config/landing"
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { Toaster } from "@/components/ui/toaster"
-import AuthNav from "@/components/auth-nav"
-import { MainNav } from "@/components/main-nav"
 import { SiteFooter } from "@/components/site-footer"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
+import Navbar from "@/components/navbar"
 
 export const dynamic = "force-dynamic"
 
@@ -79,7 +78,7 @@ export const metadata: Metadata = {
   // manifest: `${siteConfig.url}/site.webmanifest`,
 }
 
-export default async function RootLayout({ children }: RootLayoutProps) {
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body
@@ -90,14 +89,9 @@ export default async function RootLayout({ children }: RootLayoutProps) {
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <header className="container z-40 bg-background">
-            <div className="flex h-20 items-center justify-between py-6">
-              <MainNav items={landingConfig.mainNav} />
-              <AuthNav items={landingConfig.privateNav} />
-            </div>
-          </header>
+          <Navbar />
           <div className="grow">{children}</div>
-          <SiteFooter></SiteFooter>
+          <SiteFooter />
           <TailwindIndicator />
           <Toaster />
         </ThemeProvider>

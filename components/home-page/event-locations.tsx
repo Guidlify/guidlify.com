@@ -68,13 +68,13 @@ const EventLocations = () => {
   }, [])
 
   return (
-    <div id="infinite" className="slider">
+    <div id="infinite" className="slider w-full">
       {Array.from({ length: numRows }).map((_, rowIndex) => (
         <div key={rowIndex} className={`row-${rowIndex} barrier`}>
-          <ul className="lane">
+          <ul className="lane w-full">
             {shuffledData[rowIndex]?.map((item, index) => (
               <>
-                <li className="event-location">
+                <li className="event-location w-full">
                   <div
                     className="card relative shrink-0 transition-all duration-300 hover:scale-105 hover:cursor-pointer hover:shadow-slate-800"
                     key={index}

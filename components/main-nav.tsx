@@ -1,51 +1,64 @@
-"use client"
-
 import Link from "next/link"
-import { usePathname } from "next/navigation"
+import Image from "next/legacy/image"
 
-import { NavItem } from "@/types/nav"
-import { siteConfig } from "@/config/site"
-import { cn } from "@/lib/utils"
-import { Icons } from "@/components/icons"
-
-interface MainNavProps {
-  items?: NavItem[]
-}
-
-export function MainNav({ items }: MainNavProps) {
-  const pathname = usePathname()
+const Navbar = () => {
   return (
-    <div className="flex gap-6 md:gap-10">
-      <Link
-        href="/"
-        className="xs:inline-flex items-center space-x-2 sm:inline-flex md:flex"
-      >
-        <Icons.radio className="h-6 w-6" />
-        <span className="hidden font-bold sm:inline-block">
-          {siteConfig.name}
-        </span>
-      </Link>
-      {items?.length ? (
-        <nav className="hidden gap-6 md:flex">
-          {items?.map(
-            (item, index) =>
-              item.href && (
-                <Link
-                  key={index}
-                  href={item.href}
-                  className={cn(
-                    "flex items-center text-lg font-semibold text-muted-foreground sm:text-sm",
-                    item.disabled && "cursor-not-allowed opacity-80",
-                    !item.disabled && pathname == item.href && "text-primary"
-                  )}
-                  {...(!item.disabled && { pathname: item.href })}
-                >
-                  {item.title}
-                </Link>
-              )
-          )}
-        </nav>
-      ) : null}
-    </div>
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md">
+      <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex h-16 items-center justify-between">
+          {/* Logo */}
+          <div className="flex items-center">
+            <Link href="/" className="flex items-center gap-2">
+              <Image
+                src="/logo.png"
+                alt="Guidlify Logo"
+                width={32}
+                height={32}
+                className="w-8 h-8"
+              />
+              <span className="text-xl font-semibold text-gray-900">
+                Guidlify
+              </span>
+            </Link>
+          </div>
+
+          {/* Navigation Links */}
+          <div className="hidden md:block">
+            <div className="bg-gray-100 rounded-full p-1">
+              <Link
+                href="/events"
+                className="inline-block px-4 py-2 text-sm text-gray-700 hover:bg-white hover:shadow-sm rounded-full transition-all"
+              >
+                Find Events
+              </Link>
+              <Link
+                href="/packs"
+                className="inline-block px-4 py-2 text-sm text-gray-700 hover:bg-white hover:shadow-sm rounded-full transition-all"
+              >
+                Event Packs
+              </Link>
+              <Link
+                href="/community"
+                className="inline-block px-4 py-2 text-sm text-gray-700 hover:bg-white hover:shadow-sm rounded-full transition-all"
+              >
+                Community
+              </Link>
+            </div>
+          </div>
+
+          {/* Login Button */}
+          <div>
+            <Link
+              href="/login"
+              className="inline-flex items-center justify-center rounded-full bg-black px-4 py-2 text-sm font-medium text-white hover:bg-gray-900 transition-all"
+            >
+              Login
+            </Link>
+          </div>
+        </div>
+      </nav>
+    </header>
   )
 }
+
+export default Navbar 
